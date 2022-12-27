@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Forum</title>
+</head>
+<body class="bg-gray-800">
+    <main class="flex justify-center grid grid-flow-row auto-rows-max ">
+        <div class="box-border h-fit w-2/6 p-4 border-4 bg-slate-300 border-black rounded-md m-4">
+            <h1 class="text-3xl font-semibold py-2">Can I get help with my homework?</h1>
+            <p class="text-base pb-2">Hi I have some problems with my math homework and would like some help. What is the best way to write 2x*x-5=0?</p>
+        </div>
+        <section class="mb-2">
+            <label class="block pr-5 mb-2 text-xl"
+                   for="description">Comment</label>
+            <p class="message text-sm text-red-700 mb-2 hidden">
+              Error message
+            </p>
+            <textarea maxlength="1000"
+                      rows="5"
+                      id="comment"
+                      name="comment"
+                      class="resize-none w-2/6 rounded-md border-black"></textarea>
+          </section>
+        <section id="comments">
+
+        </section>
+    </main>
+</body>
+<script src="api.js"></script>
+<script src="script.js"></script>
+
+</html>

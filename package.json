@@ -1,0 +1,22 @@
+{
+  "name": "gik2f8-1-projekt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrdonkyman/gik2f8-1-projekt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrdonkyman/gik2f8-1-projekt/issues"
+  },
+  "homepage": "https://github.com/Mrdonkyman/gik2f8-1-projekt#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
