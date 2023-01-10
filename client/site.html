@@ -7,26 +7,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Forum</title>
 </head>
-<body class="bg-gray-800">
-    <main class="flex justify-center grid grid-flow-row auto-rows-max ">
-        <div class="box-border h-fit w-2/6 p-4 border-4 bg-slate-300 border-black rounded-md m-4">
-            <h1 class="text-3xl font-semibold py-2">Can I get help with my homework?</h1>
-            <p class="text-base pb-2">Hi I have some problems with my math homework and would like some help. What is the best way to write 2x*x-5=0?</p>
+<body class="bg-slate-600">
+    <main class="flex items-center flex-col">
+        <div class="box-border w-1/2 p-8 pt-2 my-8 bg-neutral-200 rounded-md drop-shadow-xl">
+            <h1 class="text-3xl font-semibold py-2 text-black text-center mb-2 ">Could you help me with my homework?</h1>
+            <p class="text-base pb-2 px-2">Hi I have some problems with my math homework and would like some help. What is the best way to write 2x*x-5=0?</p>
         </div>
-        <section class="mb-2">
-            <label class="block pr-5 mb-2 text-xl"
+        <section class="">
+            <label class="block pr-5 mb-2 text-xl text-slate-300"
                    for="description">Comment</label>
             <p class="message text-sm text-red-700 mb-2 hidden">
               Error message
             </p>
+            <form id="comment"
+                  name="comment">
             <textarea maxlength="1000"
                       rows="5"
                       id="comment"
                       name="comment"
-                      class="resize-none w-2/6 rounded-md border-black"></textarea>
-          </section>
+                      class="rounded-md w-[32rem] text-xs bg-neutral-200"></textarea>
+            <button name="submitComment"
+                    class="rounded-md bg-neutral-200 hover:bg-zinc-500 w-1/12 mt-2"
+                    type="submit">
+            Send
+            </button>
+            </form>
+        </section>
         <section id="comments">
-
         </section>
     </main>
 </body>
