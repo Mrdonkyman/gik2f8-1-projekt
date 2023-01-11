@@ -14,47 +14,47 @@ app
     next();
   });
 
-app.get('/tasks', async (req, res) => {
+app.get('/comments', async (req, res) => {
   try {
-    const tasks = await fs.readFile('./tasks.json');
-    res.send(JSON.parse(tasks));
+    const comments = await fs.readFile('./comments.json');
+    res.send(JSON.parse(comments));
   } catch (error) {
     res.status(500).send({ error });
   }
 });
-app.post('/tasks', async (req, res) => {
+app.post('/comments', async (req, res) => {
   try {
-    const task = req.body;
-    const buffer = await fs.readFile('./tasks.json');
-    const currentTasks = JSON.parse(buffer);
-    let maxTaskId = 1;
-    if (currentTasks && currentTasks.length > 0) {
-      maxTaskId = currentTasks.reduce(
+    const comment = req.body;
+    const buffer = await fs.readFile('./comments.json');
+    const currentComments = JSON.parse(buffer);
+    let maxCommentId = 1;
+    if (currentComments && currentComments.length > 0) {
+      maxCommentsId = currentComments.reduce(
         (maxId, currentElement) =>
           currentElement.id > maxId ? currentElement.id : maxId,
-        maxTaskId
+        maxCommentsId
       );
     }
 
-    const newTask = { id: maxTaskId + 1, ...task };
-    const newList = currentTasks ? [...currentTasks, newTask] : [newTask];
+    const newComment = { id: maxCommentId + 1, ...comment };
+    const newList = currentComments ? [...currentComments, newComment] : [newComment];
 
-    await fs.writeFile('./tasks.json', JSON.stringify(newList));
-    res.send(newTask);
+    await fs.writeFile('./comments.json', JSON.stringify(newList));
+    res.send(newComment);
   } catch (error) {
     res.status(500).send({ error: error.stack });
   }
 });
-app.delete('/tasks/:id', async (req, res) => {
+app.delete('/comments/:id', async (req, res) => {
   console.log(req);
   try {
     const id = req.params.id;
-    const buffer = await fs.readFile('./tasks.json');
-    const currentTasks = JSON.parse(buffer);
-    if (currentTasks.length > 0) {
+    const buffer = await fs.readFile('./comments.json');
+    const currentComments = JSON.parse(buffer);
+    if (currentComments.length > 0) {
       await fs.writeFile(
-        './tasks.json',
-        JSON.stringify(currentTasks.filter((task) => task.id != id))
+        './comments.json',
+        JSON.stringify(currentComments.filter((comment) => comment.id != id))
       );
       res.send({ message: `Uppgift med id ${id} togs bort` });
     } else {
