@@ -2,32 +2,27 @@
 
 formComment.textComment.addEventListener('input', (e) => validateField(e.target));
 formComment.addEventListener('submit', onSubmit);
+textComment.addEventListener('blur', (e) => validateField(e.target));
 
 const commentsElement = document.getElementById('comments')
 let commentsValid = true;
 let doNotRunSaveTask = true;
 const api = new Api('http://localhost:5000/comments');
-
+console.log(formComment.textComment.value.length);
 function validateField(field) {
     const {name, value} = field;
     let validationMessage = '';
     switch (name) {
         case 'textComment': {
-            if (field.innerHTML == '') {
-                commentsValid = false;
-                doNotRunSaveTask = false;
-                validationMessage = 
-                "The field may not be left empty.";
-            }
-            else if (value.length <= 0) {
-                commentsValid = false;
-                doNotRunSaveTask = false;
-                validationMessage = 
-                "The field may not be left empty.";
-            }
-            else {
+            if (value.length >= 1) {
                 commentsValid = true;
                 doNotRunSaveTask = true;
+            }
+            else {
+                commentsValid = false;
+                doNotRunSaveTask = false;
+                validationMessage = 
+                "The field may not be left empty.";
             }
             break;
         }
@@ -45,8 +40,7 @@ function onSubmit(e) {
     
     e.preventDefault();
     if (commentsValid && doNotRunSaveTask) {
-        
-    saveComment();
+        saveComment();
     }
     else {
         console.log('failed to submit');
@@ -89,7 +83,6 @@ function renderComment({ id, comment}) {
             </button>
         </div>
     `;
-                /* rounded-md bg-neutral-200 hover:bg-zinc-500 w-1/12 mt-2 */
     return html;
 }
 

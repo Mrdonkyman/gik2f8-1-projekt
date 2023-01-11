@@ -27,7 +27,7 @@ app.post('/comments', async (req, res) => {
     const comment = req.body;
     const buffer = await fs.readFile('./comments.json');
     const currentComments = JSON.parse(buffer);
-    let maxCommentId = 1;
+    let maxCommentsId = 1;
     if (currentComments && currentComments.length > 0) {
       maxCommentsId = currentComments.reduce(
         (maxId, currentElement) =>
@@ -36,7 +36,7 @@ app.post('/comments', async (req, res) => {
       );
     }
 
-    const newComment = { id: maxCommentId + 1, ...comment };
+    const newComment = { id: maxCommentsId + 1, ...comment };
     const newList = currentComments ? [...currentComments, newComment] : [newComment];
 
     await fs.writeFile('./comments.json', JSON.stringify(newList));
