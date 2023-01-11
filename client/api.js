@@ -40,7 +40,7 @@ class Api {
 
 
     remove(id) {
-    console.log(`Removing task with id ${id}`);
+    console.log(`Removing comment with id ${id}`);
 
     return fetch(`${this.url}/${id}`, {
         method: 'DELETE'
