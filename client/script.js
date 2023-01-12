@@ -77,8 +77,8 @@ function renderComment({ id, comment}) {
     `
         <div class="flex items-center group my-8">
             <p class="flex-1 text-base rounded-md bg-neutral-200 pb-2 px-2 w-[25rem] h-[15rem] drop-shadow-xl">${comment}</p>
-            <button 
-                onclick="deleteComment(${id})" class=" self-start text-xs text-zinc-200 px-1 invisible group-hover:visible ml-2 mt-3 w-[2.5rem] h-[1rem]">
+            <button  
+                onclick="deleteComment(${id})" class=" self-start text-xs text-zinc-200 px-1 hover:bg-gray-200 hover:text-black rounded-md ml-2 mt-3 w-[2.5rem] h-[1rem]">
                 delete
             </button>
         </div>

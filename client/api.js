@@ -24,20 +24,19 @@ class Api {
     );
     }
 
-
     getAll() {
     return fetch(this.url)
         .then((result) => result.json())
         .then((data) => data)
         .catch((err) => console.log(err));
     }
+
    get(id) {
     return fetch(this.url)
         .then((result) => result.json())
         .then((data) => data)
         .catch((err) => console.log(err));
     }
-
 
     remove(id) {
     console.log(`Removing comment with id ${id}`);
