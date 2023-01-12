@@ -6,7 +6,6 @@ textComment.addEventListener('blur', (e) => validateField(e.target));
 
 const commentsElement = document.getElementById('comments')
 let commentsValid = true;
-let doNotRunSaveTask = true;
 const api = new Api('http://localhost:5000/comments');
 console.log(formComment.textComment.value.length);
 function validateField(field) {
@@ -16,11 +15,9 @@ function validateField(field) {
         case 'textComment': {
             if (value.length >= 1) {
                 commentsValid = true;
-                doNotRunSaveTask = true;
             }
             else {
                 commentsValid = false;
-                doNotRunSaveTask = false;
                 validationMessage = 
                 "The field may not be left empty.";
             }
@@ -39,7 +36,7 @@ function validateField(field) {
 function onSubmit(e) {
     
     e.preventDefault();
-    if (commentsValid && doNotRunSaveTask) {
+    if (commentsValid == true) {
         saveComment();
     }
     else {
@@ -62,7 +59,7 @@ function saveComment() {
 function renderAll() {
     console.log('rendering');
 
-    api.getAll().then((comments) => {
+    api.get().then((comments) => {
         commentsElement.innerHTML = "";
         if (comments && comments.length > 0) {
             comments.forEach((comment) => {
